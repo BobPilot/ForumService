@@ -3,6 +3,7 @@ package telran.forum.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import telran.forum.api.Header;
 import telran.forum.dto.UserProfileDto;
 import telran.forum.dto.UserRegisterDto;
 import telran.forum.dto.UserUpdateDto;
@@ -17,20 +18,20 @@ public class AccountManagmentController {
 	
 	@PostMapping(Link.REGISTER)
 	public UserProfileDto register(@RequestBody UserRegisterDto userRegisterDto,
-			@RequestHeader(value = "Authorization") String auth) {
+			@RequestHeader(value = Header.AUTHORIZATION) String auth) {
 		return accountService.addUser(userRegisterDto, auth);
 	}
 
-	@PutMapping("/{id}")
+	@PutMapping(Link.ID)
 	public UserProfileDto update(@RequestBody UserUpdateDto userUpdateDto,
-								 	@RequestHeader(value = "Authorization") String auth,
+								 	@RequestHeader(value = Header.AUTHORIZATION) String auth,
 								 @PathVariable String id){
 		return accountService.updateUser(userUpdateDto, auth);
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping(Link.ID)
 	public UserProfileDto delete(@PathVariable String id,
-								@RequestHeader(value = "Authorization") String auth){
+								@RequestHeader(value = Header.AUTHORIZATION) String auth){
 		return accountService.deleteUser(id, auth);
 	}
 

@@ -15,4 +15,5 @@ public interface Link {
     String ACCOUNT = "/account";
     String REGISTER = "/register";
 
+    String ID = "/{id}";
 }

@@ -32,12 +32,12 @@ public class ForumController {
 		return service.addNewPost(newPost);
 	}
 	
-	@GetMapping(Link.POST + "/{id}")
+	@GetMapping(Link.POST + Link.ID)
 	public Post getPost(@PathVariable String id) {
 		return service.getPost(id);
 	}
 	
-	@DeleteMapping(Link.POST + "/{id}")
+	@DeleteMapping(Link.POST + Link.ID)
 	public Post removePost(@PathVariable String id) {
 		return service.removePost(id);
 	}
@@ -47,12 +47,12 @@ public class ForumController {
 		return service.updatePost(postUpdateDto);
 	}
 	
-	@PutMapping(Link.POST + "/{id}" + Link.LIKE)
+	@PutMapping(Link.POST + Link.ID + Link.LIKE)
 	public boolean addLike(@PathVariable String id) {
 		return service.addLike(id);
 	}
 	
-	@PutMapping(Link.POST + "/{id}" + Link.COMMENT)
+	@PutMapping(Link.POST + Link.ID + Link.COMMENT)
 	public Post addComment(@PathVariable String id, @RequestBody NewCommentDto newCommentDto) {
 		return service.addComment(id, newCommentDto);
 	}
